@@ -2,6 +2,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 100px;
+  width: 100%;
 }
 
 .social {
@@ -11,6 +13,7 @@
 }
 
 .logo {
+  display: flex;
   font-size: 36px;
   font-weight: bold;
   flex: 1;
@@ -18,7 +21,44 @@
 
 .links {
   display: flex;
+  align-items: center;
   gap: 10px;
   font-size: 20px;
   flex: 1;
+}
+
+
+@media screen and (max-width: 1280px) {
+  .logo {
+    font-size: 32px;
+  }
+
+  .links {
+    font-size: 18px;
+    gap: 15px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .social {
+    display: none;
+  }
+
+  .logo {
+    text-align: left;
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+  .logo {
+    font-size: 24px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+
+  .link {
+    display: none;
+  }
 }

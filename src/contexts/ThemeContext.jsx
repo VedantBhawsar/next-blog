@@ -13,11 +13,11 @@ const getFromLocalStorage = () => {
 
 export const ThemeContextProvider = ({ children }) => {
   const [theme, setTheme] = useState(() => {
-    console.log(getFromLocalStorage());
     return getFromLocalStorage();
   });
 
-  const toggle = () => setTheme(!theme);
+  const toggle = () =>
+    theme === "light" ? setTheme("dark") : setTheme("light");
 
   React.useEffect(() => {
     localStorage.setItem("theme", theme);

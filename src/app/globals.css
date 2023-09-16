@@ -16,11 +16,18 @@ body {
   overflow-x: hidden;
 }
 
-.light {
+.dark {
   --bg: #0f172a;
   --textColor: #ddd;
   --softBg: #1f273a;
   --softTextColor: #a6a6a6;
+}
+
+.light {
+  --bg: white;
+  --textColor: black;
+  --softBg: #f0f0f0;
+  --softTextColor: #626262;
 }
 
 a {
@@ -32,6 +39,7 @@ a {
   min-height: 100vh;
   background-color: var(--bg);
   color: var(--textColor);
+  transition: 0.5s;
 }
 
 .wrapper {
