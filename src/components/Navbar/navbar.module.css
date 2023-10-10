@@ -22,10 +22,22 @@
 .links {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 20px;
+  justify-content: flex-end;
+  font-weight: 500;
+  gap: 20px;
+  font-size: 18px;
   flex: 1;
 }
+
+.link {
+  opacity: 70%;
+  transition: all 0.3s;
+}
+
+.link:hover {
+  opacity: 100%;
+}
+
 
 
 @media screen and (max-width: 1280px) {
