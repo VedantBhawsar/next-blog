@@ -47,30 +47,46 @@ export const Footer = () => {
       <div className={styles.links}>
         <div className={styles.list}>
           <span className={styles.listTitle}>Links</span>
-          <Link href={"/"}>Homepage</Link>
-          <Link href={"/blog"}>Blog</Link>
-          <Link href={"/"}>About</Link>
-          <Link href={"/"}>Contact</Link>
+          <Link href={"/"} className={styles.link}>
+            Homepage
+          </Link>
+          <Link href={"/blog"} className={styles.link}>
+            Blog
+          </Link>
+          <Link href={"/"} className={styles.link}>
+            About
+          </Link>
+          <Link href={"/"} className={styles.link}>
+            Contact
+          </Link>
         </div>{" "}
         <div className={styles.list}>
           <span className={styles.listTitle}>Tags</span>
-          <Link href={"/"}>Coding</Link>
-          <Link href={"/"}>Style</Link>
-          <Link href={"/"}>Fashion</Link>
-          <Link href={"/"}>Travel</Link>
+          <Link href={"/"} className={styles.link}>
+            Coding
+          </Link>
+          <Link href={"/"} className={styles.link}>
+            Style
+          </Link>
+          <Link href={"/"} className={styles.link}>
+            Fashion
+          </Link>
+          <Link href={"/"} className={styles.link}>
+            Travel
+          </Link>
         </div>{" "}
         <div className={styles.list}>
           <span className={styles.listTitle}>Social</span>
-          <Link href={"/"} target="_blank">
+          <Link href={"/"} target="_blank" className={styles.link}>
             FaceBook
           </Link>
-          <Link href={"/"} target="_blank">
+          <Link href={"/"} target="_blank" className={styles.link}>
             Instagram
           </Link>
-          <Link href={"/"} target="_blank">
+          <Link href={"/"} target="_blank" className={styles.link}>
             Tiktok
           </Link>
-          <Link href={"/"} target="_blank">
+          <Link href={"/"} target="_blank" className={styles.link}>
             Youtube
           </Link>
         </div>

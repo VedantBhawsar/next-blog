@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 export const AuthLink = () => {
   const [open, setOpen] = useState(false);
-  const isLogin = true;
+  const isLogin = false;
   return (
     <>
       {isLogin ? (

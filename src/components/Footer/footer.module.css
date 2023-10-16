@@ -43,7 +43,15 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  font-weight: 300;
+}
+
+.link {
+  opacity: 90%;
+  transition: all 200ms ease-in-out;
+}
+.link:hover {
+  opacity: 100%;
+  color: black;
 }
 
 .listTitle {
