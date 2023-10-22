@@ -3,13 +3,15 @@ import React, { useState } from "react";
 import styles from "./authLink.module.css";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { signOut, useSession } from "next-auth/react";
 
 export const AuthLink = () => {
+  const { data, status } = useSession();
   const [open, setOpen] = useState(false);
-  const isLogin = false;
+
   return (
     <>
-      {isLogin ? (
+      {status === "unauthenticated" ? (
         <>
           <Link href={"/login"} className={styles.link}>
             Login
@@ -20,7 +22,7 @@ export const AuthLink = () => {
           <Link href={"/write"} className={styles.link}>
             Write
           </Link>
-          <Link href={"/logout"} className={styles.link}>
+          <Link href={"/logout"} className={styles.link} onClick={signOut}>
             Logout
           </Link>
         </>
@@ -73,7 +75,7 @@ export const AuthLink = () => {
               Contact
             </motion.div>
           </Link>
-          {isLogin ? (
+          {status === "authenticated" ? (
             <>
               <Link href={"/write"}>
                 {" "}
@@ -99,6 +101,7 @@ export const AuthLink = () => {
                     delay: 0.3,
                     ease: [0, 0.71, 0.2, 1.01],
                   }}
+                  onClick={signOut}
                 >
                   Logout
                 </motion.div>
@@ -106,7 +109,7 @@ export const AuthLink = () => {
             </>
           ) : (
             <>
-              <Link href={"/logout"}>
+              <Link href={"/login"}>
                 {" "}
                 <motion.div
                   initial={{ opacity: 0, scale: 0.5 }}

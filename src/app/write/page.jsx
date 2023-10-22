@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import styles from "./writePage.module.css";
-import Image from "next/image";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.bubble.css";
 import { AiOutlinePlus, AiOutlineUpload } from "react-icons/ai";
