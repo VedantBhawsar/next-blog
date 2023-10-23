@@ -3,8 +3,23 @@ import styles from "./comments.module.css";
 import Link from "next/link";
 import Image from "next/image";
 
-export const Comments = () => {
+const getData = async (postId) => {
+  const res = await fetch(process.env.URL + `/api/comments?postId=${postId}`, {
+    cache: "no-store",
+  });
+  if (!res.ok) {
+    console.log(res);
+    throw new Error("Failed!");
+  }
+  return res.json();
+};
+
+export const Comments = async ({ postId }) => {
   const status = "authenticated";
+
+  const data = await getData(postId);
+  console.log(data);
+
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Comments</h1>
