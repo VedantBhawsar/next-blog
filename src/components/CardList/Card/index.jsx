@@ -7,9 +7,13 @@ export const Card = ({ post }) => {
   return (
     <div className={styles.container}>
       <div className={styles.imageContainer}>
-        {post?.img && (
-          <Image src="/p1.jpeg" alt="" fill className={styles.image} />
-        )}
+        <Image
+          src="/p1.jpeg"
+          alt=""
+          className={styles.image}
+          loading="lazy"
+          fill
+        />
       </div>
       <div className={styles.textContainer}>
         <div className={styles.detail}>
@@ -19,12 +23,10 @@ export const Card = ({ post }) => {
           </span>
           <span className={styles.category}>{post?.catSlug}</span>
         </div>
-        <Link href={"/"}>
-          <h1>{post?.title}</h1>
-        </Link>
+        <h1>{post?.title}</h1>
         <p className={styles.description}>{post?.description}</p>
-        <Link href={"/"} className={styles.link}>
-          Read More
+        <Link href={`posts/${post?.id}`} className={styles.link}>
+          Read More...
         </Link>
       </div>
     </div>
