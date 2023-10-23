@@ -12,14 +12,6 @@ export const Navbar = () => {
   return (
     <div className={styles.container}>
       <div className={styles.social}>
-        <Tooltip
-          id="my-tooltip"
-          style={{
-            borderRadius: "10px",
-            fontSize: 12,
-            transition: "all 350ms",
-          }}
-        />
         <Image
           className={styles.socialIcon}
           src={"/facebook.png"}
@@ -57,6 +49,14 @@ export const Navbar = () => {
           data-tooltip-content="Youtube"
         />
       </div>
+      <Tooltip
+        id="my-tooltip"
+        style={{
+          borderRadius: "10px",
+          fontSize: 12,
+          transition: "all 350ms",
+        }}
+      />
       <div className={styles.logo}>lamablog</div>
       <div className={styles.links}>
         <ThemeToggle />
