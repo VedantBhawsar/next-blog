@@ -8,7 +8,7 @@ export const MenuPosts = ({ withImage }) => {
     <Link href={"/"} className={styles.item}>
       {withImage && (
         <div className={styles.imageContainer}>
-          <Image src="/p1.jpeg" fill className={styles.image} />
+          <Image src="/p1.jpeg" alt="" fill className={styles.image} />
         </div>
       )}
       <div className={styles.textContainer}>

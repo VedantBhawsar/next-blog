@@ -1,11 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import styles from "./writePage.module.css";
-import ReactQuill from "react-quill";
 import "react-quill/dist/quill.bubble.css";
 import { AiOutlinePlus, AiOutlineUpload } from "react-icons/ai";
 import { BsCardImage, BsCameraVideo } from "react-icons/bs";
-import { useRouter } from "next/navigation";
 import {
   getStorage,
   ref,
@@ -14,10 +12,13 @@ import {
 } from "firebase/storage";
 import { app } from "../../utils/firebase";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import dynamic from "next/dynamic";
 
 const WritePage = () => {
   const { status } = useSession();
   const router = useRouter();
+  const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
   const [open, setOpen] = useState(false);
   const [file, setFile] = useState(null);
