@@ -13,6 +13,23 @@
   gap: 10px;
 }
 
+.social {
+  display: flex;
+  gap: 10px;
+  flex: 1;
+}
+
+.socialIcon {
+  cursor: pointer;
+}
+
+.logo {
+  display: flex;
+  font-size: 36px;
+  font-weight: bold;
+  flex: 1;
+}
+
 .logo {
   display: flex;
   align-items: center;
@@ -49,13 +66,15 @@
   opacity: 90%;
   transition: all 200ms ease-in-out;
 }
+
 .link:hover {
   opacity: 100%;
-  color: black;
+  color: var(--textColor);
 }
 
 .listTitle {
   font-weight: bold;
+  margin-bottom: 10px;
 }
 
 @media screen and (max-width: 1024px) {

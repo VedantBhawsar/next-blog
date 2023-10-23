@@ -1,7 +1,9 @@
+"use client";
 import React from "react";
 import styles from "./footer.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import { Tooltip } from "react-tooltip";
 
 export const Footer = () => {
   return (
@@ -17,31 +19,59 @@ export const Footer = () => {
           temporibus porro quasi modi reiciendis exercitationem maxime corrupti
           quidem, minus, veritatis eum quia id.
         </p>
-        <div className={styles.icons}>
-          <Image
-            src={"/facebook.png"}
-            height={18}
-            width={18}
-            alt="facebook image"
+        <div className={styles.social}>
+          <Tooltip
+            id="my-tooltip"
+            style={{
+              borderRadius: "10px",
+              fontSize: 12,
+              transition: "all 350ms",
+            }}
           />
-          <Image
-            src={"/instagram.png"}
-            height={18}
-            width={18}
-            alt="instagram image"
-          />
-          <Image
-            src={"/tiktok.png"}
-            height={18}
-            width={18}
-            alt="tiktok image"
-          />
-          <Image
-            src={"/youtube.png"}
-            height={18}
-            width={18}
-            alt="youtube image"
-          />
+          <Link href={"https://facebook.com/"} target="_blank">
+            <Image
+              className={styles.socialIcon}
+              src={"/facebook.png"}
+              alt="facebook"
+              width={24}
+              height={24}
+              data-tooltip-id="my-tooltip"
+              data-tooltip-content="Facebook"
+            />
+          </Link>
+          <Link href={"https://instagram.com/"} target="_blank">
+            <Image
+              className={styles.socialIcon}
+              src={"/instagram.png"}
+              alt="instagram"
+              width={24}
+              height={24}
+              data-tooltip-id="my-tooltip"
+              data-tooltip-content="Instagram"
+            />
+          </Link>
+          <Link href={"https://tiktok.com/"} target="_blank">
+            <Image
+              className={styles.socialIcon}
+              src={"/tiktok.png"}
+              alt="tiktok"
+              width={24}
+              height={24}
+              data-tooltip-id="my-tooltip"
+              data-tooltip-content="Tiktok"
+            />
+          </Link>
+          <Link href={"https://youtube.com/"} target="_blank">
+            <Image
+              className={styles.socialIcon}
+              src={"/youtube.png"}
+              alt="youtube"
+              width={24}
+              height={24}
+              data-tooltip-id="my-tooltip"
+              data-tooltip-content="Youtube"
+            />
+          </Link>
         </div>
       </div>
       <div className={styles.links}>
@@ -62,16 +92,16 @@ export const Footer = () => {
         </div>{" "}
         <div className={styles.list}>
           <span className={styles.listTitle}>Tags</span>
-          <Link href={"/"} className={styles.link}>
+          <Link href={"/blog?cat=coding"} className={styles.link}>
             Coding
           </Link>
-          <Link href={"/"} className={styles.link}>
+          <Link href={"/blog?cat=style"} className={styles.link}>
             Style
           </Link>
-          <Link href={"/"} className={styles.link}>
+          <Link href={"/blog?cat=fashion"} className={styles.link}>
             Fashion
           </Link>
-          <Link href={"/"} className={styles.link}>
+          <Link href={"/blog?cat=travel"} className={styles.link}>
             Travel
           </Link>
         </div>{" "}

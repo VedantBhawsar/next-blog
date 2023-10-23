@@ -15,7 +15,6 @@ const LoginPage = () => {
   let [google_loading, set_google_loading] = useState(false);
   let [github_loading, set_github_loading] = useState(false);
   const { data, status } = useSession();
-  console.log(data, status);
 
   const googleHandler = async () => {
     set_google_loading(true);
