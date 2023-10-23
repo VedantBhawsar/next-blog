@@ -1,24 +1,45 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import styles from "./comments.module.css";
 import Link from "next/link";
 import Image from "next/image";
+import useSWR from "swr";
+import { useSession } from "next-auth/react";
 
-const getData = async (postId) => {
-  const res = await fetch(process.env.URL + `/api/comments?postId=${postId}`, {
-    cache: "no-store",
-  });
+const fetcher = async (url) => {
+  const res = await fetch(url);
+
+  const data = await res.json();
+
   if (!res.ok) {
-    console.log(res);
-    throw new Error("Failed!");
+    const error = new Error(data.message);
+    throw error;
   }
-  return res.json();
+
+  return data;
 };
 
-export const Comments = async ({ postId }) => {
-  const status = "authenticated";
+export const Comments = ({ postId }) => {
+  const { status } = useSession();
+  const [loading, setLoading] = useState(false);
 
-  const data = await getData(postId);
-  console.log(data);
+  const { data, mutate, isLoading } = useSWR(
+    `http://localhost:3000/api/comments?postid=${postId}`,
+    fetcher
+  );
+
+  const [description, setDescription] = useState("");
+
+  const handleSubmit = async () => {
+    setLoading(true);
+    await fetch("/api/comments", {
+      method: "POST",
+      body: JSON.stringify({ description, postSlug: postId }),
+    });
+    mutate();
+    setDescription("");
+    setLoading(false);
+  };
 
   return (
     <div className={styles.container}>
@@ -28,33 +49,54 @@ export const Comments = async ({ postId }) => {
           <textarea
             placeholder="write a comment..."
             className={styles.input}
-          ></textarea>
-          <button className={styles.button}>Send</button>
+            onChange={(e) => setDescription(e.target.value)}
+            value={description}
+          />
+          {loading ? (
+            <button className={styles.button} style={{ cursor: "not-allowed" }}>
+              Sending
+            </button>
+          ) : (
+            <button
+              className={styles.button}
+              style={{ cursor: description.length < 4 ? "not-allowed" : "" }}
+              onClick={handleSubmit}
+            >
+              Send
+            </button>
+          )}
         </div>
       ) : (
-        <Link href={"/login"}>Login to write comment</Link>
+        <Link href="/login">Login to write a comment</Link>
       )}
       <div className={styles.comments}>
-        <div className={styles.comment}>
-          <div className={styles.user}>
-            <Image
-              src={"/p1.jpeg"}
-              alt=""
-              width={50}
-              height={50}
-              className={styles.image}
-            />
-            <div className={styles.userInfo}>
-              <span className={styles.username}>Vedant</span>
-              <span className={styles.date}>10.12.2003</span>
-            </div>
-          </div>
-          <p className={styles.description}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio
-            consequatur unde, eveniet in, reiciendis animi atque impedit error
-            quaerat cumque eos officia. Ullam, excepturi iusto?
-          </p>
-        </div>
+        {isLoading
+          ? "loading"
+          : data?.map((item) => (
+              <div className={styles.comment} key={item._id}>
+                <div className={styles.user}>
+                  {item?.user?.image && (
+                    <Image
+                      src={item.user.image}
+                      alt=""
+                      width={50}
+                      height={50}
+                      className={styles.image}
+                    />
+                  )}
+                  <div className={styles.userInfo}>
+                    <span className={styles.username}>{item.user.name}</span>
+                    <span className={styles.date}>
+                      {" "}
+                      {item?.createdAt.split("-")[1]}.
+                      {item?.createdAt.split("-")[2].split("T")[0]}.
+                      {item?.createdAt.split("-")[0]}
+                    </span>
+                  </div>
+                </div>
+                <p className={styles.description}>{item.description}</p>
+              </div>
+            ))}
       </div>
     </div>
   );

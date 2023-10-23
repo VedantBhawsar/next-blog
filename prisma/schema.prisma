@@ -82,11 +82,11 @@ model Post {
 
 model Comment {
   id          String   @id @default(cuid()) @map("_id")
-  slug        String   @unique
+  slug        String?  @unique
   createdAt   DateTime @default(now())
   description String
   userEmail   String
   user        User     @relation(fields: [userEmail], references: [email])
-  postId      String
-  post        Post     @relation(fields: [postId], references: [id])
+  postSlug    String
+  post        Post     @relation(fields: [postSlug], references: [id])
 }

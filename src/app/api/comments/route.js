@@ -1,23 +1,57 @@
 import { NextResponse } from "next/server";
 import prisma from "../../../utils/connect";
+import { getAuthSession } from "@/utils/auth";
 
-//Get Single Post
 export const GET = async (req) => {
-  const { searchparams } = new URL(req.url);
-  console.log(searchparams);
-  const postId = searchparams.get("postid");
-  console.log(postId);
+  const { searchParams } = new URL(req.url);
+  const postid = searchParams.get("postid");
+
   try {
-    // const comments = await prisma.comment.findMany({
-    //   where: { ...(postId && { postId }) },
-    //   include: { user: true },
-    // });
-    console.log("comments");
-    return new NextResponse(JSON.stringify("woring", { status: 200 }));
-  } catch (error) {
-    console.log(error);
+    if (!postid) {
+      return new NextResponse(
+        JSON.stringify(
+          { message: "Missing 'postid' parameter" },
+          { status: 400 }
+        )
+      );
+    }
+
+    const comments = await prisma.comment.findMany({
+      where: {
+        postSlug: postid,
+      },
+      include: { user: true },
+    });
+
+    return new NextResponse(JSON.stringify(comments, { status: 200 }));
+  } catch (err) {
+    console.error(err);
     return new NextResponse(
-      JSON.stringify({ massage: "Something went wrong!" }, { status: 500 })
+      JSON.stringify({ message: "Something went wrong!" }, { status: 500 })
+    );
+  }
+};
+
+export const POST = async (req) => {
+  const session = await getAuthSession();
+  // console.log(session);
+
+  if (!session) {
+    return new NextResponse(
+      JSON.stringify({ message: "Not Authenticated!" }, { status: 401 })
+    );
+  }
+
+  try {
+    const body = await req.json();
+    const comment = await prisma.comment.create({
+      data: { ...body, userEmail: session.user.email, slug: body.postSlug },
+    });
+    return new NextResponse(JSON.stringify(comment, { status: 200 }));
+  } catch (err) {
+    console.log(err);
+    return new NextResponse(
+      JSON.stringify({ message: "Something went wrong!" }, { status: 500 })
     );
   }
 };
