@@ -9,7 +9,7 @@ import AuthProvider from "@/provider/AuthProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Blog App",
+  title: "Diary Blog",
   description: "The best blog app!",
 };
 

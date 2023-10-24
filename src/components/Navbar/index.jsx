@@ -66,7 +66,7 @@ export const Navbar = () => {
         </Link>
       </div>
       <Link href={"/"}>
-        <div className={styles.logo}>lamablog</div>
+        <div className={styles.logo}>DiaryBlog</div>
       </Link>
       <div className={styles.links}>
         <ThemeToggle />

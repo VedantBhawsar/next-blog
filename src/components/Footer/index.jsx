@@ -11,7 +11,7 @@ export const Footer = () => {
       <div className={styles.info}>
         <div className={styles.logo}>
           <Image src={"/logo.png"} alt="website logo" width={50} height={50} />
-          <h1 className={styles.logoText}>LameBlog</h1>
+          <h1 className={styles.logoText}>DiaryBlog</h1>
         </div>
         <p className={styles.description}>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Recusandae
