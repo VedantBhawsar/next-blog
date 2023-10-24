@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { lazy, useEffect, useState } from "react";
 import styles from "./writePage.module.css";
 import "react-quill/dist/quill.bubble.css";
 import { AiOutlinePlus, AiOutlineUpload } from "react-icons/ai";
@@ -16,10 +16,12 @@ import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 
 const WritePage = () => {
+  const TextArea = dynamic(() => import("@/components/TextArea"), {
+    ssr: false,
+  });
   const { status } = useSession();
   const router = useRouter();
-  const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
-
+  const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
   const [file, setFile] = useState(null);
   const [media, setMedia] = useState("");
@@ -79,6 +81,7 @@ const WritePage = () => {
       .replace(/^-+|-+$/g, "");
 
   const handleSubmit = async () => {
+    setLoading(true);
     const res = await fetch("/api/posts", {
       method: "POST",
       body: JSON.stringify({
@@ -94,6 +97,7 @@ const WritePage = () => {
       const data = await res.json();
       router.push(`/posts/${data.id}`);
     }
+    setLoading(true);
   };
 
   return (
@@ -140,17 +144,21 @@ const WritePage = () => {
             </button>
           </div>
         )}
-        <ReactQuill
-          className={styles.textArea}
-          theme="bubble"
-          value={value}
-          onChange={setValue}
-          placeholder="Tell your story..."
-        />
+        <TextArea value={value} setValue={setValue} />
       </div>
-      <button className={styles.publish} onClick={handleSubmit}>
-        Publish
-      </button>
+      {loading ? (
+        <button
+          className={styles.publish}
+          onClick={handleSubmit}
+          style={{ cursor: "wait" }}
+        >
+          Publishing
+        </button>
+      ) : (
+        <button className={styles.publish} onClick={handleSubmit}>
+          Publish
+        </button>
+      )}
     </div>
   );
 };

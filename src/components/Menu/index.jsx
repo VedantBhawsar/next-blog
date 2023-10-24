@@ -7,7 +7,7 @@ export const Menu = () => {
   return (
     <div className={styles.container}>
       <div>
-        <h2 className={styles.subtitle}>What`&apos;`s hot</h2>
+        <h2 className={styles.subtitle}>What&apos;s hot</h2>
         <h1 className={styles.title}>Most Popular</h1>
         <div className={styles.items}>
           <MenuPosts withImage={true} />

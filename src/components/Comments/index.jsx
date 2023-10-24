@@ -53,7 +53,7 @@ export const Comments = ({ postId }) => {
             value={description}
           />
           {loading ? (
-            <button className={styles.button} style={{ cursor: "not-allowed" }}>
+            <button className={styles.button} style={{ cursor: "wait" }}>
               Sending
             </button>
           ) : (
