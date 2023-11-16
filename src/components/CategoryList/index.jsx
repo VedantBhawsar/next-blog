@@ -1,10 +1,11 @@
-import React from "react";
-import styles from "./categoryList.module.css";
+'use client'
 import Image from "next/image";
 import Link from "next/link";
+import styles from "./categoryList.module.css";
+import {useEffect, useState} from "react";
 
 const getData = async () => {
-  const res = await fetch(process.env.URL + "/api/categories", {
+  const res = await fetch( "/api/categories", {
     cache: "no-store",
   });
   if (!res.ok) {
@@ -13,8 +14,16 @@ const getData = async () => {
   return res.json();
 };
 
-export const CategoryList = async () => {
-  const data = await getData();
+export const CategoryList =  () => {
+  const [data, setData] = useState([])
+  useEffect(() => {
+    const get = async () =>{
+      let response = await getData()
+      setData(response)
+    }
+    get()
+  }, []);
+
 
   return (
     <div className={styles.container}>
@@ -22,9 +31,9 @@ export const CategoryList = async () => {
       <div className={styles.categories}>
         {data?.map((category) => (
           <Link
+              key={category.id}
             href={`/blog?cat=${category?.slug}`}
             className={`${styles.category} ${styles[category.slug]}`}
-            key={category._id}
           >
             {category.img && (
               <Image

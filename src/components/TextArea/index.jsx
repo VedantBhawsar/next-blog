@@ -1,15 +1,12 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import { WriteContext } from "@/contexts/WriteContext";
+import { useContext } from "react";
 import ReactQuill from "react-quill";
 import styles from "./textarea.module.css";
 
-const TextArea = ({ value, setValue }) => {
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => {
-    setMounted(true);
+const TextArea = () => {
+  const { value, setValue } = useContext(WriteContext);
 
-    return setMounted(false);
-  });
   return (
     <ReactQuill
       className={styles.textArea}

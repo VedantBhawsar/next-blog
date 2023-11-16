@@ -4,8 +4,8 @@ import { getAuthSession } from "@/utils/auth";
 
 export const GET = async (req) => {
   const { searchParams } = new URL(req.url);
-  const page = searchParams.get("page");
-  const cat = searchParams.get("cat");
+  const page = searchParams.get("page") || 1
+  const cat = searchParams.get("cat") || ''
   const POST_PER_PAGE = 4;
 
   const query = {

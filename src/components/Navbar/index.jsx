@@ -7,6 +7,15 @@ import { AuthLink } from "../authLink";
 import { ThemeToggle } from "../themeToggle";
 import "react-tooltip/dist/react-tooltip.css";
 import { Tooltip } from "react-tooltip";
+import { Pacifico } from 'next/font/google'
+import { FaGithub } from "react-icons/fa";
+// Dancing Script
+
+const pacifico = Pacifico({
+    variable: '--font-pacifico',
+    subsets: ['latin'],
+    weight:'400'
+})
 
 export const Navbar = () => {
   return (
@@ -65,8 +74,9 @@ export const Navbar = () => {
           />
         </Link>
       </div>
-      <Link href={"/"}>
-        <div className={styles.logo}>DiaryBlog</div>
+      <Link href={"/"} className={`${styles.logo} ${pacifico.variable}`}>
+        {/*<Image src={'./logo.svg'} alt={'logo'} fill={true}/>*/}
+          DiaryBlog
       </Link>
       <div className={styles.links}>
         <ThemeToggle />

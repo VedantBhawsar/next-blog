@@ -1,31 +1,29 @@
 "use client";
-import React, { lazy, useEffect, useState } from "react";
-import styles from "./writePage.module.css";
-import "react-quill/dist/quill.bubble.css";
-import { AiOutlinePlus, AiOutlineUpload } from "react-icons/ai";
-import { BsCardImage, BsCameraVideo } from "react-icons/bs";
+import TextArea from "@/components/TextArea";
+import { WriteContext } from "@/contexts/WriteContext";
 import {
+  getDownloadURL,
   getStorage,
   ref,
   uploadBytesResumable,
-  getDownloadURL,
 } from "firebase/storage";
-import { app } from "../../utils/firebase";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import dynamic from "next/dynamic";
+import { useContext, useEffect, useState } from "react";
+import { AiOutlinePlus, AiOutlineUpload } from "react-icons/ai";
+import { BsCameraVideo, BsCardImage } from "react-icons/bs";
+import "react-quill/dist/quill.bubble.css";
+import { app } from "../../utils/firebase";
+import styles from "./writePage.module.css";
 
 const WritePage = () => {
-  const TextArea = dynamic(() => import("@/components/TextArea"), {
-    ssr: false,
-  });
+  const { value } = useContext(WriteContext);
   const { status } = useSession();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
   const [file, setFile] = useState(null);
   const [media, setMedia] = useState("");
-  const [value, setValue] = useState("");
   const [title, setTitle] = useState("");
   const [catSlug, setCatSlug] = useState("");
 
@@ -68,9 +66,9 @@ const WritePage = () => {
     return <div className={styles.loading}>Loading...</div>;
   }
 
-  if (status === "unauthenticated") {
-    router.push("/");
-  }
+  // if (status === "unauthenticated") {
+  //   router.push("/");
+  // }
 
   const slugify = (str) =>
     str
@@ -144,7 +142,9 @@ const WritePage = () => {
             </button>
           </div>
         )}
-        <TextArea value={value} setValue={setValue} />
+        <div style={{ width: "100%", height: "90%" }}>
+          <TextArea />
+        </div>
       </div>
       {loading ? (
         <button

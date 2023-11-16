@@ -6,15 +6,15 @@ import Link from "next/link";
 export const Card = ({ post }) => {
   return (
     <div className={styles.container}>
-      <div className={styles.imageContainer}>
-        <Image
-          src="/p1.jpeg"
-          alt=""
-          className={styles.image}
-          loading="lazy"
-          fill
-        />
-      </div>
+        {post.img && <div className={styles.imageContainer}>
+            <Image
+                src={post.img}
+                alt=""
+                className={styles.image}
+                loading="lazy"
+                fill
+            />
+        </div>}
       <div className={styles.textContainer}>
         <div className={styles.detail}>
           <span className={styles.date}>

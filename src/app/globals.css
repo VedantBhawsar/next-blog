@@ -3,6 +3,12 @@
   --textColor: black;
   --softBg: #f0f0f0;
   --softTextColor: #626262;
+
+  --font-family-sans-serif: Nunito, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Noto Color Emoji";
+  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
 }
 
 * {
@@ -28,6 +34,9 @@ body {
   --textColor: #ddd;
   --softBg: #1f273a;
   --softTextColor: #a6a6a6;
+  --font-family-sans-serif: Nunito, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Noto Color Emoji";
 }
 
 .light {
@@ -47,6 +56,7 @@ a {
   background-color: var(--bg);
   color: var(--textColor);
   transition: 0.5s;
+  /* font-family: var(--font-family-sans-serif); */
 }
 
 .wrapper {
