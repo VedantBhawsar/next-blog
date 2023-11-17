@@ -4,6 +4,7 @@ import styles from "./loginPage.module.css";
 import { signIn, useSession } from "next-auth/react";
 import { useState } from "react";
 import { MoonLoader } from "react-spinners";
+import {useRouter} from "next/navigation";
 
 const override = {
   display: "block",
@@ -15,17 +16,20 @@ const LoginPage = () => {
   let [google_loading, set_google_loading] = useState(false);
   let [github_loading, set_github_loading] = useState(false);
   const { data, status } = useSession();
+  const router = useRouter()
 
   const googleHandler = async () => {
     set_google_loading(true);
     await signIn("google");
     set_google_loading(false);
+    router.push('/')
   };
 
   const githubHandler = async () => {
     set_github_loading(true);
     await signIn("github");
     set_github_loading(false);
+    router.push('/')
   };
 
   return (

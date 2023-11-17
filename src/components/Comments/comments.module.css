@@ -3,7 +3,7 @@
 }
 
 .title {
-  color: val(--softTextColor);
+  color: var(--softTextColor);
   margin-bottom: 30px;
 }
 
@@ -15,9 +15,13 @@
 }
 
 .input {
+  resize: none;
+  background-color: var(--softBg);
+  color: var(--textColor);
   padding: 20px;
   width: 100%;
   border-radius: 5px;
+  border: none;
 }
 
 .button {

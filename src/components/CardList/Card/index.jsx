@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./card.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import html from "react-inner-html";
 
 export const Card = ({ post }) => {
   return (
@@ -24,7 +25,7 @@ export const Card = ({ post }) => {
           <span className={styles.category}>{post?.catSlug}</span>
         </div>
         <h1>{post?.title}</h1>
-        <p className={styles.description}>{post?.description}</p>
+        <p className={styles.description} {...html(post?.description)}/>
         <Link href={`posts/${post?.id}`} className={styles.link}>
           Read More...
         </Link>

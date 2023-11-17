@@ -41,6 +41,8 @@
 
 .description {
   color: var(--softTextColor);
+  height: 130px;
+  overflow-y: hidden;
   font-weight: 300;
   font-size: 18px;
 }

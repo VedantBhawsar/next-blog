@@ -29,7 +29,13 @@
   justify-content: center;
   gap: 20px;
   transition-delay: 300ms;
+  transition: all 300ms ease-out;
 }
+
+.socialButton:hover{
+  box-shadow: 5px 5px 15px var(--bg);
+}
+
 
 .socialButton:first-child {
   background-color: #ff5555;

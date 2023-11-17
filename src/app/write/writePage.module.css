@@ -2,8 +2,9 @@
 }
 
 .input {
-  padding: 50px;
+  resize: none;
   font-size: 64px;
+  height: inherit;
   border: none;
   outline: none;
   background-color: transparent;
@@ -24,7 +25,7 @@
 .editor {
   display: flex;
   gap: 20px;
-  height: 700px;
+  min-height: 700px;
   flex-direction: column;
   position: relative;
 }

@@ -22,18 +22,18 @@ export const CardList =  ({ page, cat }) => {
     const [count, setCount] = useState(0)
     useEffect(() => {
         const get = async () =>{
-            let response = await getData()
+            let response = await getData(page, cat)
             setPosts(response.posts)
             setCount(response.count)
         }
         get()
-    }, []);
-  const POST_PER_PAGE = 4;
+    }, [page]);
+  const POST_PER_PAGE = 6;
   const hasNext = POST_PER_PAGE * (page - 1) + POST_PER_PAGE < count;
   const hasPrev = POST_PER_PAGE * (page - 1) > 0;
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Recent Posts</h1>
+      <h1 className={styles.title} id={'recent_posts'}>Recent Posts</h1>
       <div className={styles.posts}>
         {posts?.map((post) => (
           <Card post={post} key={post.id} />

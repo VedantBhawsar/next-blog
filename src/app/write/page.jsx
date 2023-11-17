@@ -13,11 +13,11 @@ import { useContext, useEffect, useState } from "react";
 import { AiOutlinePlus, AiOutlineUpload } from "react-icons/ai";
 import { BsCameraVideo, BsCardImage } from "react-icons/bs";
 import "react-quill/dist/quill.bubble.css";
-import { app } from "../../utils/firebase";
+import { app } from "@/utils/firebase";
 import styles from "./writePage.module.css";
 
 const WritePage = () => {
-  const { value } = useContext(WriteContext);
+  const { value, setValue } = useContext(WriteContext);
   const { status } = useSession();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
@@ -93,19 +93,21 @@ const WritePage = () => {
 
     if (res.status === 200) {
       const data = await res.json();
-      router.push(`/posts/${data.id}`);
+      await router.push(`/posts/${data.id}`);
+      setValue('')
     }
     setLoading(true);
+
   };
 
   return (
     <div className={styles.container}>
-      <input
-        type="text"
+      <textarea
         placeholder="Title"
         className={styles.input}
         onChange={(e) => setTitle(e.target.value)}
       />
+
       <select
         className={styles.select}
         onChange={(e) => setCatSlug(e.target.value)}

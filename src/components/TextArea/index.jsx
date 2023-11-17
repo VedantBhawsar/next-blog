@@ -1,8 +1,11 @@
 "use client";
 import { WriteContext } from "@/contexts/WriteContext";
 import { useContext } from "react";
-import ReactQuill from "react-quill";
 import styles from "./textarea.module.css";
+import dynamic from 'next/dynamic';
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+import 'react-quill/dist/quill.snow.css';
+
 
 const TextArea = () => {
   const { value, setValue } = useContext(WriteContext);

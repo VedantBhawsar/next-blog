@@ -5,6 +5,7 @@ import Link from "next/link";
 import { LuMouse } from "react-icons/lu";
 import {motion} from "framer-motion";
 import React, {useEffect, useState} from "react";
+import html from "react-inner-html";
 const getData = async () => {
   let url = `/api/posts?page=${1}`
   console.log(url)
@@ -61,9 +62,8 @@ export const Featured =  () => {
           </h1>
           </Link>
 
-          <p className={styles.description}>
-            {post[0]?.description}
-                    </p>
+          <p className={styles.description} {...html()}/>
+          <p className={styles.description} {...html(post[0]?.description)}/>
           <Link href={`posts/${post[0]?.id}`} className={styles.link}>
             Read More...
           </Link>
