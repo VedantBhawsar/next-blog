@@ -1,8 +1,7 @@
-import { Menu } from "@/components/Menu";
-import styles from "./singlepage.module.css";
-import Image from "next/image";
 import { Comments } from "@/components/Comments";
+import Image from "next/image";
 import html from "react-inner-html";
+import styles from "./singlepage.module.css";
 
 const getData = async (slug) => {
   const res = await fetch(process.env.URL + `/api/posts/${slug}`, {
@@ -38,9 +37,9 @@ const SinglePage = async ({ params }) => {
               <span className={styles.username}>{data?.user?.name}</span>
               <span className={styles.date}>
                 {" "}
-                {data?.createdAt.split("-")[1]}.
-                {data?.createdAt.split("-")[2].split("T")[0]}.
-                {data?.createdAt.split("-")[0]}
+                {data?.createdAt?.split("-")[1]}.
+                {data?.createdAt?.split("-")[2].split("T")[0]}.
+                {data?.createdAt?.split("-")[0]}
               </span>
             </div>
           </div>

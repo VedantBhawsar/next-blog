@@ -1,11 +1,11 @@
-'use client'
+"use client";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import styles from "./categoryList.module.css";
-import {useEffect, useState} from "react";
 
-const getData = async () => {
-  const res = await fetch( "/api/categories", {
+const getData = async (setIsLoading) => {
+  const res = await fetch("/api/categories", {
     cache: "no-store",
   });
   if (!res.ok) {
@@ -14,16 +14,15 @@ const getData = async () => {
   return res.json();
 };
 
-export const CategoryList =  () => {
-  const [data, setData] = useState([])
+export const CategoryList = () => {
+  const [data, setData] = useState([]);
   useEffect(() => {
-    const get = async () =>{
-      let response = await getData()
-      setData(response)
-    }
-    get()
-  }, []);
-
+    const get = async () => {
+      let response = await getData();
+      setData(response);
+    };
+    get();
+  },[]);
 
   return (
     <div className={styles.container}>
@@ -31,7 +30,7 @@ export const CategoryList =  () => {
       <div className={styles.categories}>
         {data?.map((category) => (
           <Link
-              key={category.id}
+            key={category.id}
             href={`/blog?cat=${category?.slug}`}
             className={`${styles.category} ${styles[category.slug]}`}
           >

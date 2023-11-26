@@ -1,14 +1,13 @@
 "use client";
-import React from "react";
-import styles from "./navbar.module.css";
+import { motion } from 'framer-motion';
+import { Pacifico } from 'next/font/google';
 import Image from "next/image";
 import Link from "next/link";
+import { Tooltip } from "react-tooltip";
+import "react-tooltip/dist/react-tooltip.css";
 import { AuthLink } from "../authLink";
 import { ThemeToggle } from "../themeToggle";
-import "react-tooltip/dist/react-tooltip.css";
-import { Tooltip } from "react-tooltip";
-import { Pacifico } from 'next/font/google'
-import { FaGithub } from "react-icons/fa";
+import styles from "./navbar.module.css";
 // Dancing Script
 
 const pacifico = Pacifico({
@@ -18,6 +17,7 @@ const pacifico = Pacifico({
 })
 
 export const Navbar = () => {
+  
   return (
     <div className={styles.container}>
       <div className={styles.social}>
@@ -78,7 +78,7 @@ export const Navbar = () => {
         {/*<Image src={'./logo.svg'} alt={'logo'} fill={true}/>*/}
           DiaryBlog
       </Link>
-      <div className={styles.links}>
+      <motion.div className={styles.links} initial={{right:0}} animate={{right:1}} exit={{right:0 }}>
         <ThemeToggle />
         <Link href={"/"} className={styles.link}>
           Homepage
@@ -87,7 +87,7 @@ export const Navbar = () => {
           About
         </Link>
         <AuthLink />
-      </div>
+      </motion.div>
     </div>
   );
 };

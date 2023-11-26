@@ -1,8 +1,8 @@
 'use client'
-import React, {useEffect, useState} from "react";
-import styles from "./cardlist.module.css";
-import { Card } from "./Card";
+import { useEffect, useState } from "react";
 import { Pagination } from "../Pagination";
+import { Card } from "./Card";
+import styles from "./cardlist.module.css";
 
 const getData = async (page, cat) => {
   const res = await fetch(
@@ -28,6 +28,7 @@ export const CardList =  ({ page, cat }) => {
         }
         get()
     }, [page]);
+  
   const POST_PER_PAGE = 6;
   const hasNext = POST_PER_PAGE * (page - 1) + POST_PER_PAGE < count;
   const hasPrev = POST_PER_PAGE * (page - 1) > 0;

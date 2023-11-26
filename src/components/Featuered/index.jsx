@@ -1,11 +1,10 @@
 'use client'
 import Image from "next/image";
-import styles from "./featured.module.css";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { LuMouse } from "react-icons/lu";
-import {motion} from "framer-motion";
-import React, {useEffect, useState} from "react";
 import html from "react-inner-html";
+import styles from "./featured.module.css";
 const getData = async () => {
   let url = `/api/posts?page=${1}`
   console.log(url)
@@ -35,11 +34,9 @@ export const Featured =  () => {
           <br />
           Explore my blog for a wealth of diverse ideas and insights.
         </h1>
-        <motion.div>
         <Link href="#post" className={styles.scrollButton}>
           Scroll <LuMouse />
         </Link>
-        </motion.div>
       </div>
       <div id="post" />
       <div className={styles.post}>
