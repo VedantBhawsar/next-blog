@@ -1,18 +1,16 @@
 "use client";
-import { CardList } from "@/components/CardList";
-import { CategoryList } from "@/components/CategoryList";
-import { Featured } from "@/components/Featuered";
-import { LoadingScreen } from "@/components/LoadingScreen";
-import { Menu } from "@/components/Menu";
-import { motion } from "framer-motion";
-import { useState } from "react";
+import {motion} from "framer-motion";
+import {useState} from "react";
+import {CardList} from '@components/CardList';
+import {CategoryList} from "@components/CategoryList";
+import {Featured} from "@components/Featuered";
+import {LoadingScreen} from "@components/LoadingScreen";
+import {Menu} from "@components/Menu";
 import styles from "./homepage.module.css";
-
 
 export default function Home({ searchParams }) {
   const page = parseInt(searchParams.page) || 1;
   const [isLoading, setIsLoading] = useState(false);
-
   return (
    <>
       {isLoading ? <LoadingScreen /> :

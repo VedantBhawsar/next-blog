@@ -1,21 +1,35 @@
-import { Comments } from "@/components/Comments";
+"use client"
+import {Comments} from "@/components/Comments";
 import Image from "next/image";
 import html from "react-inner-html";
 import styles from "./singlepage.module.css";
+import {useEffect, useState} from "react";
 
 const getData = async (slug) => {
-  const res = await fetch(process.env.URL + `/api/posts/${slug}`, {
+  const res = await fetch(`/api/posts/${slug}`, {
     cache: "no-store",
   });
   if (!res.ok) {
+    console.log(res)
     throw new Error("Failed!");
   }
   return res.json();
 };
 
-const SinglePage = async ({ params }) => {
+const SinglePage = ({params}) => {
   const { slug } = params;
-  const data = await getData(slug);
+  const [data, setData] = useState({})
+  console.log(slug)
+
+  useEffect(() => {
+    async function get() {
+      let response = await getData(slug);
+      setData(response)
+    }
+
+    get()
+  }, [slug]);
+
 
   return (
     <div className={styles.container}>

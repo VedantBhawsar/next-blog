@@ -1,13 +1,11 @@
-import { Menu } from "@/components/Menu";
-import styles from "./singlepage.module.css";
 import Image from "next/image";
-import { Comments } from "@/components/Comments";
+import {Comments} from "@components/Comments";
+import {Menu} from "@components/Menu";
+import styles from "./singlepage.module.css";
 
 const SinglePage = async ({ params }) => {
-  const { slug } = params;
-
   return (
-    <div className={styles.container}>
+      <div>
       <div className={styles.infoContainer}>
         <div className={styles.textContainer}>
           <h2 className={styles.title}>

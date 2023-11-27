@@ -1,6 +1,6 @@
-import { NextResponse } from "next/server";
-import prisma from "../../../utils/connect";
-import { getAuthSession } from "@/utils/auth";
+import {NextResponse} from "next/server";
+import {getAuthSession} from "@utils/auth";
+import prisma from "@utils/connect";
 
 export const GET = async (req) => {
   const { searchParams } = new URL(req.url);

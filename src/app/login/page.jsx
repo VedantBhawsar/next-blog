@@ -1,16 +1,9 @@
 "use client";
-import React from "react";
+import React, {useEffect, useState} from "react";
 import styles from "./loginPage.module.css";
-import { signIn, useSession } from "next-auth/react";
-import { useState } from "react";
-import { MoonLoader } from "react-spinners";
+import {signIn, useSession} from "next-auth/react";
+import {MoonLoader} from "react-spinners";
 import {useRouter} from "next/navigation";
-
-const override = {
-  display: "block",
-  margin: "0 auto",
-  borderColor: "red",
-};
 
 const LoginPage = () => {
   let [google_loading, set_google_loading] = useState(false);
@@ -18,11 +11,17 @@ const LoginPage = () => {
   const { data, status } = useSession();
   const router = useRouter()
 
+
+  useEffect(() => {
+    if (status === 'authenticated') {
+      router.push('/')
+    }
+  }, [data]);
+
   const googleHandler = async () => {
     set_google_loading(true);
     await signIn("google");
     set_google_loading(false);
-    router.push('/')
   };
 
   const githubHandler = async () => {

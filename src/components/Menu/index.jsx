@@ -1,12 +1,11 @@
 'use client'
 import React, {useEffect, useState} from "react";
 import styles from "./menu.module.css";
-import { MenuPosts } from "./MenuPosts";
-import { MenuCategory } from "./MenuCategory";
+import {MenuPosts} from "./MenuPosts";
+import {MenuCategory} from "./MenuCategory";
 
 
 const getData = async () => {
-    let url = `/api/posts?page=${1}`
     const res = await fetch(`/api/posts?page=${1}`, {
         cache: "no-store",
     });
@@ -21,6 +20,7 @@ export const Menu = () => {
         const get = async () =>{
             let posts = await getData()
             setPost(posts.posts)
+            return posts
         }
         get()
     }, []);

@@ -1,10 +1,10 @@
 "use client";
-import React, { useState } from "react";
+import React, {useState} from "react";
 import styles from "./comments.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import useSWR from "swr";
-import { useSession } from "next-auth/react";
+import {useSession} from "next-auth/react";
 
 const fetcher = async (url) => {
   const res = await fetch(url);
@@ -36,7 +36,7 @@ export const Comments = ({ postId }) => {
       method: "POST",
       body: JSON.stringify({ description, postSlug: postId }),
     });
-    mutate();
+    await mutate();
     setDescription("");
     setLoading(false);
   };

@@ -7,12 +7,15 @@
 
 .infoContainer {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 50px;
 }
 
 .textContainer {
+  display: flex;
+  flex-direction: column;
   flex: 1;
+  gap: 10px;
 }
 
 .title {
@@ -31,11 +34,14 @@
   width: 50px;
   height: 50px;
   position: relative;
+
 }
 
 .avatar {
   border-radius: 50%;
   object-fit: cover;
+  box-shadow: 5px 5px 10px black;
+
 }
 
 .userTextContainer {
@@ -72,9 +78,10 @@
 }
 
 .description p {
-  font-size: 20px;
-  font-weight: 300;
+  font-size: 17px;
+  font-weight: 350;
   margin-bottom: 20px;
+  line-height: 1.5;
 }
 
 @media screen and (max-width: 1536px) {

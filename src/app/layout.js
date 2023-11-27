@@ -1,12 +1,13 @@
-import { Footer } from "@/components/Footer";
-import { Navbar } from "@/components/Navbar";
-import { ThemeContextProvider } from "@/contexts/ThemeContext";
-import { WriteContextProvider } from "@/contexts/WriteContext";
-import AuthProvider from "@/provider/AuthProvider";
-import { ThemeProvider } from "@/provider/ThemeProvider";
-import { Inter } from "next/font/google";
+import {Inter} from "next/font/google";
+import {Footer} from '@components/Footer';
+import {Navbar} from "@components/Navbar";
+import NextNProgressClient from '../components/NextNProgressClient';
+import {ThemeContextProvider} from "@contexts/ThemeContext";
+import {WriteContextProvider} from "@contexts/WriteContext";
+import AuthProvider from "../provider/AuthProvider";
+import {ThemeProvider} from "@provider/ThemeProvider";
 import "./globals.css";
-import NextNProgressClient from '@/components/NextNProgressClient'
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {

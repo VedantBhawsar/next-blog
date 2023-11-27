@@ -1,14 +1,13 @@
 "use client";
-import { motion } from "framer-motion";
-import { signOut, useSession } from "next-auth/react";
+import {motion} from "framer-motion";
+import {signOut, useSession} from "next-auth/react";
 import Link from "next/link";
-import { useState } from "react";
+import {useState} from "react";
 import styles from "./authLink.module.css";
 
 export const AuthLink = () => {
   const { data, status } = useSession();
   const [open, setOpen] = useState(false);
-
   return (
     <>
       {status === "authenticated" ? (
@@ -16,7 +15,7 @@ export const AuthLink = () => {
           <Link href={"/write"} className={styles.link}>
             Write
           </Link>
-          <Link href={"/logout"} className={styles.link} onClick={signOut}>
+            <Link href={"/"} className={styles.link} onClick={signOut}>
             Logout
           </Link>
         </>

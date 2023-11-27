@@ -1,10 +1,11 @@
 'use client'
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { LuMouse } from "react-icons/lu";
+import {useEffect, useState} from "react";
+import {LuMouse} from "react-icons/lu";
 import html from "react-inner-html";
 import styles from "./featured.module.css";
+
 const getData = async () => {
   let url = `/api/posts?page=${1}`
   console.log(url)
@@ -23,6 +24,7 @@ export const Featured =  () => {
     const get = async () =>{
        let posts = await getData()
       setPost(posts.posts)
+      return posts
     }
     get()
   }, []);

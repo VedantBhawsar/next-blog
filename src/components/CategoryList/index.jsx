@@ -1,10 +1,10 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import styles from "./categoryList.module.css";
 
-const getData = async (setIsLoading) => {
+const getData = async () => {
   const res = await fetch("/api/categories", {
     cache: "no-store",
   });
