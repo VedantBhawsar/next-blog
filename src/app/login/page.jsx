@@ -28,7 +28,6 @@ const LoginPage = () => {
     set_github_loading(true);
     await signIn("github");
     set_github_loading(false);
-    router.push('/')
   };
 
   return (

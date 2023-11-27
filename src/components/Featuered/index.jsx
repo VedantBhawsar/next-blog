@@ -28,6 +28,7 @@ export const Featured =  () => {
     }
     get()
   }, []);
+
   return (
     <div className={styles.container}>
       <div className={styles.titleContainer}>

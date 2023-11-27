@@ -25,7 +25,6 @@ export const Menu = () => {
         get()
     }, []);
 
-    console.log(post)
 
   return (
     <div className={styles.container}>
@@ -44,7 +43,7 @@ export const Menu = () => {
         <h1 className={styles.title}>Categories</h1>
         <MenuCategory />
       </div>
-      <div>
+      <div style={{display:"none"}}>
         <h2 className={styles.subtitle}>Chosen by the editor</h2>
         <h1 className={styles.title}>Editor Pick</h1>
         <div className={styles.items}>

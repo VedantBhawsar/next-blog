@@ -1,3 +1,4 @@
+'use client'
 import { Pacifico } from "next/font/google";
 import { ClimbingBoxLoader } from "react-spinners";
 import { Tooltip } from "react-tooltip";

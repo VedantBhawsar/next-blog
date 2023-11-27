@@ -5,7 +5,7 @@ import styles from "./menuposts.module.css";
 
 export const MenuPosts = ({ withImage, data }) => {
   return (
-    <Link href={`/${data.id}`} className={styles.item}>
+    <Link href={`/posts/${data.id}`} className={styles.item}>
       {withImage && data.img && (
         <div className={styles.imageContainer}>
           <Image src={data.img} alt="" fill className={styles.image} />

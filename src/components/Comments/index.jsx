@@ -58,6 +58,7 @@ export const Comments = ({ postId }) => {
             </button>
           ) : (
             <button
+              disabled={description.length< 4 && true}
               className={styles.button}
               style={{ cursor: description.length < 4 ? "not-allowed" : "" }}
               onClick={handleSubmit}
