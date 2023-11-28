@@ -92,7 +92,7 @@ export const Footer = () => {
           <Link href={"/about"} className={styles.link}>
             About
           </Link>
-          <Link href={"/"} className={styles.link}>
+          <Link href={"/contact"} className={styles.link}>
             Contact
           </Link>
         </div>{" "}
