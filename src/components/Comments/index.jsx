@@ -24,7 +24,7 @@ export const Comments = ({ postId }) => {
   const [loading, setLoading] = useState(false);
 
   const { data, mutate, isLoading } = useSWR(
-    `http://localhost:3000/api/comments?postid=${postId}`,
+    `https://diary-x-blog.vercel.app/api/comments?postid=${postId}`,
     fetcher
   );
 
