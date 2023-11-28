@@ -4,6 +4,13 @@ import styles from "./footer.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import { Tooltip } from "react-tooltip";
+import {Pacifico} from "next/font/google";
+
+const pacifico = Pacifico({
+  variable: '--font-pacifico',
+  subsets: ['latin'],
+  weight:'400'
+})
 
 export const Footer = () => {
   return (
@@ -11,13 +18,12 @@ export const Footer = () => {
       <div className={styles.info}>
         <div className={styles.logo}>
           <Image src={"/logo.png"} alt="website logo" width={50} height={50} />
-          <h1 className={styles.logoText}>DiaryBlog</h1>
+          <Link href={"/"} className={`${styles.logo} ${pacifico.variable}`}>
+            DiaryBlog
+          </Link>
         </div>
         <p className={styles.description}>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Recusandae
-          consequatur voluptatibus velit atque deleniti animi voluptas,
-          temporibus porro quasi modi reiciendis exercitationem maxime corrupti
-          quidem, minus, veritatis eum quia id.
+          Welcome to DiaryBlog - your digital diary of inspiration and diverse perspectives. Join us on a journey where words come to life, weaving a tapestry of stories and insights. Explore, connect, and share in the magic of DiaryBlog - where every entry is a celebration of curiosity and community.
         </p>
         <div className={styles.social}>
           <Tooltip
@@ -83,7 +89,7 @@ export const Footer = () => {
           <Link href={"/blog"} className={styles.link}>
             Blog
           </Link>
-          <Link href={"/"} className={styles.link}>
+          <Link href={"/about"} className={styles.link}>
             About
           </Link>
           <Link href={"/"} className={styles.link}>
@@ -107,9 +113,9 @@ export const Footer = () => {
         </div>{" "}
         <div className={styles.list}>
           <span className={styles.listTitle}>Social</span>
-          <Link href={"/"} target="_blank" className={styles.link}>
+          <a href={"/"} target="_blank" className={styles.link}>
             FaceBook
-          </Link>
+          </a>
           <Link href={"/"} target="_blank" className={styles.link}>
             Instagram
           </Link>

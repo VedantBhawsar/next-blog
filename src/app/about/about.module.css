@@ -1,0 +1,15 @@
+.container{
+    display: flex;
+    gap:50px;
+    flex-direction: column;
+}
+
+.section{
+    display: flex;
+ flex-direction: column;
+    gap:10px;
+}
+
+.paragraph {
+     color: var(--softTextColor);
+}

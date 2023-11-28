@@ -83,7 +83,7 @@ export const Navbar = () => {
         <Link href={"/"} className={styles.link}>
           Homepage
         </Link>
-        <Link href={"/"} className={styles.link}>
+        <Link href={"/about"} className={styles.link}>
           About
         </Link>
         <AuthLink />

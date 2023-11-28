@@ -22,9 +22,9 @@ const fetcher = async (url) => {
 export const Comments = ({ postId }) => {
   const { status } = useSession();
   const [loading, setLoading] = useState(false);
-
+  console.log(process.env.URL)
   const { data, mutate, isLoading } = useSWR(
-    `https://diary-x-blog.vercel.app/api/comments?postid=${postId}`,
+    `/api/comments?postid=${postId}`,
     fetcher
   );
 
