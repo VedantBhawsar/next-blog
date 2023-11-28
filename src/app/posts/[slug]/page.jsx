@@ -22,6 +22,7 @@ const SinglePage = ({params}) => {
   console.log(slug)
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     async function get() {
       let response = await getData(slug);
       setData(response)

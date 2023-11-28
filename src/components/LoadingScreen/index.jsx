@@ -3,6 +3,7 @@ import { Pacifico } from "next/font/google";
 import { ClimbingBoxLoader } from "react-spinners";
 import { Tooltip } from "react-tooltip";
 import styles from './loadingScreen.module.css';
+
 const pacifico = Pacifico({
   variable: "--font-pacifico",
   subsets: ["latin"],

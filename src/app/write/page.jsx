@@ -118,9 +118,7 @@ const WritePage = () => {
             <option className={styles.options} value="coding">coding</option>
           </select>
           <div className={styles.editor}>
-
-
-            <div style={{width: "100%", height: "90%"}}>
+            <div style={{width: "100%", height: "90vh", fontSize:'10px'}}>
               <TextArea/>
             </div>
           </div>

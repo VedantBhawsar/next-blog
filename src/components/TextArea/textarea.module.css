@@ -1,6 +1,6 @@
 .textArea {
   width: 100%;
-  min-height: 100%;
+  min-height: 90vh;
     background-color: var(--softBg);
     font-size: 10px !important;
     border-radius: 5px;

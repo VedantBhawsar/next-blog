@@ -1,21 +1,39 @@
-import React from "react";
+import React, {useState} from "react";
 import styles from "./card.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import html from "react-inner-html";
+import {MoonLoader} from 'react-spinners'
 
 export const Card = ({ post }) => {
+  const [isImgLoading, setIsImgLoading] = useState(true)
+
   return (
     <div className={styles.container}>
-        {post.img && <div className={styles.imageContainer}>
+
+        {
+            post.img &&
+      <div className={styles.imageContainer}>
+      {post.img  &&
             <Image
                 src={post.img}
                 alt=""
                 className={styles.image}
                 loading="lazy"
                 fill
+                quality={100}
+                onLoadingComplete={()=> setIsImgLoading(false)}
             />
-        </div>}
+        }
+        {
+            post.img && isImgLoading &&
+              <div className={styles.imgLoading}>
+                <MoonLoader color={'white'} size={30}/>
+            </div>
+        }
+      </div>
+        }
+
       <div className={styles.textContainer}>
         <div className={styles.detail}>
           <span className={styles.date}>
@@ -24,7 +42,10 @@ export const Card = ({ post }) => {
           </span>
           <span className={styles.category}>{post?.catSlug}</span>
         </div>
+        <Link href={`posts/${post?.id}`}>
+
         <h1>{post?.title}</h1>
+        </Link>
         <p className={styles.description} {...html(post?.description)}/>
         <Link href={`posts/${post?.id}`} className={styles.link}>
           Read More...
