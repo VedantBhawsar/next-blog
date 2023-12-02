@@ -10,7 +10,7 @@ const getData = async () => {
   let url = `/api/posts?page=${1}`
   console.log(url)
   const res = await fetch(`/api/posts?page=${1}`, {
-    cache: "no-store",
+    cache: "force-cache",
   });
   if (!res.ok) {
     throw new Error("Failed!");

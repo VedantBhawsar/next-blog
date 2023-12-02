@@ -7,7 +7,7 @@ import {useEffect, useState} from "react";
 
 const getData = async (slug) => {
   const res = await fetch(`/api/posts/${slug}`, {
-    cache: "no-store",
+    cache: "force-cache",
   });
   if (!res.ok) {
     console.log(res)

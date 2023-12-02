@@ -6,7 +6,7 @@ import styles from "./categoryList.module.css";
 
 const getData = async () => {
   const res = await fetch("/api/categories", {
-    cache: "no-store",
+    cache: "force-cache",
   });
   if (!res.ok) {
     throw new Error("Failed!");

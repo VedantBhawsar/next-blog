@@ -8,7 +8,7 @@ const getData = async (page, cat) => {
   const res = await fetch(
     `/api/posts?page=${page || 1}&cat=${cat || ""}`,
     {
-      cache: "no-store",
+      cache: "force-cache",
     }
   );
   if (!res.ok) {

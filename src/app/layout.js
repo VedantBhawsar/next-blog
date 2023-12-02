@@ -1,12 +1,14 @@
-import {Inter} from "next/font/google";
-import {Footer} from '@components/Footer';
-import {Navbar} from "@components/Navbar";
-import NextNProgressClient from '../components/NextNProgressClient';
-import {ThemeContextProvider} from "@contexts/ThemeContext";
-import {WriteContextProvider} from "@contexts/WriteContext";
+import { Inter } from "next/font/google";
+import { Footer } from "@components/Footer";
+import { Navbar } from "@components/Navbar";
+import NextNProgressClient from "../components/NextNProgressClient";
+import { ThemeContextProvider } from "@contexts/ThemeContext";
+import { WriteContextProvider } from "@contexts/WriteContext";
 import AuthProvider from "../provider/AuthProvider";
-import {ThemeProvider} from "@provider/ThemeProvider";
+import { ThemeProvider } from "@provider/ThemeProvider";
 import "./globals.css";
+import { Suspense } from "react";
+import { LoadingScreen } from "@/components/LoadingScreen";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,8 +16,6 @@ export const metadata = {
   title: "Diary Blog",
   description: "The best blog app!",
 };
-
-
 
 export default function RootLayout({ children }) {
   return (
@@ -25,15 +25,17 @@ export default function RootLayout({ children }) {
           <ThemeContextProvider>
             <WriteContextProvider>
               <ThemeProvider>
-                <div className="container">
-                  <div className="wrapper">
-                    <NextNProgressClient/>
-                    <Navbar />
-                    {children}
-                    <br />
-                    <Footer />
+                <Suspense fallback={<LoadingScreen />}>
+                  <div className="container">
+                    <div className="wrapper">
+                      <NextNProgressClient />
+                      <Navbar />
+                      {children}
+                      <br />
+                      <Footer />
+                    </div>
                   </div>
-                </div>
+                </Suspense>
               </ThemeProvider>
             </WriteContextProvider>
           </ThemeContextProvider>

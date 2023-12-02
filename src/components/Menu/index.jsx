@@ -7,7 +7,7 @@ import {MenuCategory} from "./MenuCategory";
 
 const getData = async () => {
     const res = await fetch(`/api/posts?page=${1}`, {
-        cache: "no-store",
+        cache: "force-cache",
     });
     if (!res.ok) {
         throw new Error("Failed!");
