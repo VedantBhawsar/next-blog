@@ -8,7 +8,8 @@ import AuthProvider from "../provider/AuthProvider";
 import { ThemeProvider } from "@provider/ThemeProvider";
 import "./globals.css";
 import { Suspense } from "react";
-import { LoadingScreen } from "@/components/LoadingScreen";
+import LoadingScreen from "@/components/LoadingScreen";
+// import { LoadingScreen } from "@/components/LoadingScreen";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,17 +26,16 @@ export default function RootLayout({ children }) {
           <ThemeContextProvider>
             <WriteContextProvider>
               <ThemeProvider>
-                <Suspense fallback={<LoadingScreen />}>
-                  <div className="container">
-                    <div className="wrapper">
-                      <NextNProgressClient />
-                      <Navbar />
-                      {children}
-                      <br />
-                      <Footer />
-                    </div>
+                <div className="container">
+                  <div className="wrapper">
+                    <NextNProgressClient />
+                    <Navbar />
+                    <Suspense fallback={<LoadingScreen />}>{children}
+                    </Suspense>
+                    <br />
+                    <Footer />
                   </div>
-                </Suspense>
+                </div>
               </ThemeProvider>
             </WriteContextProvider>
           </ThemeContextProvider>

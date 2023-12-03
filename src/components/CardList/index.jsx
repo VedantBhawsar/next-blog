@@ -1,8 +1,9 @@
 'use client'
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { Pagination } from "../Pagination";
 import { Card } from "./Card";
 import styles from "./cardlist.module.css";
+import LoadingScreen from "../LoadingScreen";
 
 const getData = async (page, cat) => {
   const res = await fetch(
@@ -17,6 +18,7 @@ const getData = async (page, cat) => {
   return res.json();
 };
 
+
 export const CardList =  ({ page, cat }) => {
     const [posts, setPosts] = useState([])
     const [count, setCount] = useState(0)
@@ -27,8 +29,8 @@ export const CardList =  ({ page, cat }) => {
             setCount(response.count)
         }
         get()
-    }, [page]);
-  
+    }, [cat, page]);
+
   const POST_PER_PAGE = 6;
   const hasNext = POST_PER_PAGE * (page - 1) + POST_PER_PAGE < count;
   const hasPrev = POST_PER_PAGE * (page - 1) > 0;
@@ -36,9 +38,11 @@ export const CardList =  ({ page, cat }) => {
     <div className={styles.container}>
       <h1 className={styles.title} id={'recent_posts'}>Recent Posts</h1>
       <div className={styles.posts}>
+        <Suspense fallback={<LoadingScreen/>}>
         {posts?.map((post) => (
           <Card post={post} key={post.id} />
         ))}
+        </Suspense>
       </div>
       <Pagination page={page} hasNext={hasNext} hasPrev={hasPrev} />
     </div>

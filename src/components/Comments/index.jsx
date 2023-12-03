@@ -22,7 +22,6 @@ const fetcher = async (url) => {
 export const Comments = ({ postId }) => {
   const { status } = useSession();
   const [loading, setLoading] = useState(false);
-  console.log(process.env.URL)
   const { data, mutate, isLoading } = useSWR(
     `/api/comments?postid=${postId}`,
     fetcher

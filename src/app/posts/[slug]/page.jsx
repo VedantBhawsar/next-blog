@@ -4,7 +4,7 @@ import Image from "next/image";
 import html from "react-inner-html";
 import styles from "./singlepage.module.css";
 import {useEffect, useState} from "react";
-
+import LoadingScreen from '@components/LoadingScreen'
 const getData = async (slug) => {
   const res = await fetch(`/api/posts/${slug}`, {
     cache: "force-cache",
@@ -19,13 +19,13 @@ const getData = async (slug) => {
 const SinglePage = ({params}) => {
   const { slug } = params;
   const [data, setData] = useState({})
-  console.log(slug)
-
+  const [loading, setLoading] = useState(true)
   useEffect(() => {
     window.scrollTo(0, 0)
     async function get() {
       let response = await getData(slug);
       setData(response)
+      setLoading(false)
     }
 
     get()
@@ -33,7 +33,8 @@ const SinglePage = ({params}) => {
 
 
   return (
-    <div className={styles.container}>
+    <>
+   {loading ? <LoadingScreen/> : <div className={styles.container}>
       <div className={styles.infoContainer}>
         <div className={styles.textContainer}>
           <h2 className={styles.title}>{data?.title}</h2>
@@ -44,6 +45,8 @@ const SinglePage = ({params}) => {
                   src={data?.user?.image}
                   alt="user image"
                   fill
+                  loading="lazy"
+                  quality={30}
                   className={styles.avatar}
                 />
               </div>
@@ -73,8 +76,12 @@ const SinglePage = ({params}) => {
           </div>
         </div>
       </div>
-    </div>
+    </div>}
+    </>
   );
 };
 
 export default SinglePage;
+
+
+
