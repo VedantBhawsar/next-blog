@@ -4,7 +4,7 @@ import { Featured } from "@components/Featuered";
 import { Menu } from "@components/Menu";
 import styles from "./homepage.module.css";
 
-export default function Home({ searchParams, categories }) {
+export default function Home({ searchParams }) {
   const page = parseInt(searchParams.page) || 1;
   return (
     <>
