@@ -1,33 +1,14 @@
-"use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import { LuMouse } from "react-icons/lu";
 import html from "react-inner-html";
 import styles from "./featured.module.css";
 
-const getData = async () => {
-  let url = `/api/posts?page=${1}`;
-  console.log(url);
-  const res = await fetch(`/api/posts?page=${1}`, {
-    cache: "force-cache",
-  });
-  if (!res.ok) {
-    throw new Error("Failed!");
-  }
-  return res.json();
-};
-
-export const Featured = () => {
-  const [post, setPost] = useState([]);
-  useEffect(() => {
-    const get = async () => {
-      let posts = await getData();
-      setPost(posts.posts);
-      return posts;
-    };
-    get();
-  }, []);
+export const Featured = async() => {
+   let response = await fetch(`http://localhost:3000/api/posts?page=${1}`);
+   if(!response.ok) { return "Failed to fetch!"}
+   
+   const {posts}= await response.json()
 
   return (
     <div className={styles.container}>
@@ -46,24 +27,30 @@ export const Featured = () => {
       <div id="post" />
       <div className={styles.post}>
         <div className={styles.imgContainer}>
-          <Image className={styles.image} src={"/p1.jpeg"} alt="image" fill />
+          <Image
+            className={styles.image}
+            src={posts[0].img}
+            alt="image"
+            fill
+            quality={10}
+            objectFit="cover"
+          />
         </div>
         <div className={styles.textContainer}>
           <div className={styles.detail}>
             <span className={styles.date}>
-              {post[0]?.createdAt.split("-")[0]}.
-              {post[0]?.createdAt.split("-")[1]}.
-              {post[0]?.createdAt.split("-")[2].split("T")[0]}
+              {posts[0]?.createdAt.split("-")[0]}.
+              {posts[0]?.createdAt.split("-")[1]}.
+              {posts[0]?.createdAt.split("-")[2].split("T")[0]}
             </span>
-            <span className={styles.category}>{post[0]?.catSlug}</span>
+            <span className={styles.category}>{posts[0]?.catSlug}</span>
           </div>
-          <Link href={`posts/${post[0]?.id}`}>
-            <h1>{post[0]?.title}</h1>
+          <Link href={`posts/${posts[0]?.id}`}>
+            <h1>{posts[0]?.title}</h1>
           </Link>
 
-          <p className={styles.description} {...html()} />
-          <p className={styles.description} {...html(post[0]?.description)} />
-          <Link href={`posts/${post[0]?.id}`} className={styles.link}>
+          <p className={styles.description} {...html(posts[0]?.description)} />
+          <Link href={`posts/${posts[0]?.id}`} className={styles.link}>
             Read More...
           </Link>
         </div>

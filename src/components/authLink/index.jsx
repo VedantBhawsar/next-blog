@@ -4,6 +4,7 @@ import {signOut, useSession} from "next-auth/react";
 import Link from "next/link";
 import {useState} from "react";
 import styles from "./authLink.module.css";
+import { IoMdClose } from "react-icons/io";
 
 export const AuthLink = () => {
   const { data, status } = useSession();
@@ -16,7 +17,7 @@ export const AuthLink = () => {
           <Link href={"/write"} className={styles.link}>
             Write
           </Link>
-            <Link href={"/"} className={styles.link} onClick={signOut}>
+          <Link href={"/"} className={styles.link} onClick={signOut}>
             Logout
           </Link>
         </>
@@ -34,14 +35,17 @@ export const AuthLink = () => {
       </div>
       {open && (
         <div className={styles.responsiveMenu}>
-          <Link href={"/home"}>
+          <div className={styles.closeBtn}>
+            <IoMdClose onClick={() => setOpen(!open)} />
+          </div>
+          <Link href={"/"}>
             <motion.div
               initial={{ opacity: 0, scale: 0.5 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{
                 duration: 0.3,
-                delay: 0.3,
-                ease: [0, 0.71, 0.2, 1.01],
+                delay: 0.1,
+                damping: [0, 0.71, 0.2, 1.01],
               }}
             >
               Home
@@ -54,8 +58,8 @@ export const AuthLink = () => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{
                 duration: 0.3,
-                delay: 0.3,
-                ease: [0, 0.71, 0.2, 1.01],
+                delay: 0.2,
+                damping: [0, 0.71, 0.2, 1.01],
               }}
             >
               About us
@@ -69,7 +73,7 @@ export const AuthLink = () => {
               transition={{
                 duration: 0.3,
                 delay: 0.3,
-                ease: [0, 0.71, 0.2, 1.01],
+                damping: [0, 0.71, 0.2, 1.01],
               }}
             >
               Contact
@@ -84,8 +88,8 @@ export const AuthLink = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{
                     duration: 0.3,
-                    delay: 0.3,
-                    ease: [0, 0.71, 0.2, 1.01],
+                    delay: 0.4,
+                    damping: [0, 0.71, 0.2, 1.01],
                   }}
                 >
                   Write
@@ -98,8 +102,8 @@ export const AuthLink = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{
                     duration: 0.3,
-                    delay: 0.3,
-                    ease: [0, 0.71, 0.2, 1.01],
+                    delay: 0.5,
+                    damping: [0, 0.71, 0.2, 1.01],
                   }}
                   onClick={signOut}
                 >
@@ -116,7 +120,7 @@ export const AuthLink = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{
                     duration: 0.3,
-                    delay: 0.3,
+                    delay: 0.5,
                     ease: [0, 0.71, 0.2, 1.01],
                   }}
                 >

@@ -8,7 +8,6 @@ import "react-tooltip/dist/react-tooltip.css";
 import { AuthLink } from "../authLink";
 import { ThemeToggle } from "../themeToggle";
 import styles from "./navbar.module.css";
-// Dancing Script
 
 const pacifico = Pacifico({
     variable: '--font-pacifico',
@@ -75,10 +74,9 @@ export const Navbar = () => {
         </Link>
       </div>
       <Link href={"/"} className={`${styles.logo} ${pacifico.variable}`}>
-        {/*<Image src={'./logo.svg'} alt={'logo'} fill={true}/>*/}
           DiaryBlog
       </Link>
-      <motion.div className={styles.links} initial={{right:0}} animate={{right:1}} exit={{right:0 }}>
+      <motion.div className={styles.links}>
         <ThemeToggle />
         <Link href={"/"} className={styles.link}>
           Homepage

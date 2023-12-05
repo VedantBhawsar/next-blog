@@ -7,6 +7,7 @@ import { MoonLoader } from "react-spinners";
 
 export const Card = ({ post }) => {
   const [isImgLoading, setIsImgLoading] = useState(true);
+
   return (
     <div className={styles.container}>
       {post.img && (
@@ -30,7 +31,7 @@ export const Card = ({ post }) => {
         </div>
       )}
 
-      <div className={styles.textContainer}>
+      <div className={styles.textContainer} >
         <div className={styles.detail}>
           <span className={styles.date}>
             {post?.createdAt.split("-")[0]}.{post?.createdAt.split("-")[1]}.

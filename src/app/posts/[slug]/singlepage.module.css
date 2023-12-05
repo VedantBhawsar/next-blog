@@ -34,14 +34,12 @@
   width: 50px;
   height: 50px;
   position: relative;
-
+  z-index: 10;
 }
 
 .avatar {
   border-radius: 50%;
   object-fit: cover;
-  box-shadow: 5px 5px 10px black;
-
 }
 
 .userTextContainer {
@@ -59,12 +57,23 @@
 .imageContainer {
   flex: 1;
   height: 350px;
+  max-width: 450px;
   position: relative;
 }
 
 .image {
   object-fit: cover;
-  border-radius: 5px;
+  border-radius: 10px;
+  user-select: none;
+}
+
+.imgLoading{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--softBg);
+  border-radius: 10px;
+  height: 100%;
 }
 
 .content {
@@ -102,6 +111,10 @@
 @media screen and (max-width: 640px) {
   .title {
     font-size: 36px;
+  }
+
+  .infoContainer{
+    gap:10px
   }
 
   .container{
