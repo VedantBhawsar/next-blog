@@ -3,7 +3,7 @@ import Link from "next/link";
 import styles from "./categoryList.module.css";
 
 export const CategoryList =async () => {
-  const response = await fetch('http://localhost:3000/api/categories',{
+  const response = await fetch(`${process.env.URL}/api/categories`,{
     cache:"force-cache"
   })
   if(!response.ok){

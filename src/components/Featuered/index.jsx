@@ -5,7 +5,7 @@ import html from "react-inner-html";
 import styles from "./featured.module.css";
 
 export const Featured = async() => {
-   let response = await fetch(`http://localhost:3000/api/posts?page=${1}`);
+   let response = await fetch(`${process.env.URL}/api/posts?page=${1}`);
    if(!response.ok) { return "Failed to fetch!"}
    
    const {posts}= await response.json()
