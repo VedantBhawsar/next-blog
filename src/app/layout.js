@@ -27,7 +27,7 @@ export default function RootLayout({ children }) {
             <WriteContextProvider>
               <ThemeProvider>
                 <div className="container">
-                  <div className="wrapper">
+                  <div className="wrapper" >
                     <NextNProgressClient />
                     <Navbar />
                     <Suspense fallback={<LoadingScreen />}>{children}

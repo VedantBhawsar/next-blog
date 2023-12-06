@@ -4,11 +4,13 @@ import { LuMouse } from "react-icons/lu";
 import html from "react-inner-html";
 import styles from "./featured.module.css";
 
-export const Featured = async() => {
-   let response = await fetch(`${process.env.URL}/api/posts?page=${1}`);
-   if(!response.ok) { return "Failed to fetch!"}
-   
-   const {posts}= await response.json()
+export const Featured = async () => {
+  let response = await fetch(`${process.env.URL}/api/posts?page=${1}`);
+  if (!response.ok) {
+    return "Failed to fetch!";
+  }
+
+  const { posts } = await response.json();
 
   return (
     <div className={styles.container}>

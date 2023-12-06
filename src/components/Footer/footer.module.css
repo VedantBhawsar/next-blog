@@ -27,6 +27,7 @@
   font-family: var(--font-pacifico);
   font-size: 25px;
   user-select: none;
+  color:var(--textColor)
 }
 
 .logo {
