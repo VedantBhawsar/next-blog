@@ -1,15 +1,14 @@
-
 .wrapper {
-    display: flex;
-    gap: 30px;
-    flex-direction: column;
-    width: 100%;
+  display: flex;
+  gap: 30px;
+  flex-direction: column;
+  width: 100%;
 }
 
 .input {
   resize: none;
   font-size: 64px;
-    text-wrap: normal;
+  text-wrap: normal;
   border: none;
   outline: none;
   background-color: transparent;
@@ -21,15 +20,15 @@
 }
 
 .select {
-    padding: 10px 30px;
-    max-width: 130px;
+  padding: 10px 30px;
+  max-width: 130px;
   border-radius: 5px;
-    outline: none;
-    font-size: 20px;
+  outline: none;
+  font-size: 20px;
 }
 
 .options {
-    padding: 50px 100px;
+  padding: 50px 100px;
 }
 
 .editor {
@@ -62,6 +61,7 @@
   z-index: 999;
   width: 100%;
   left: 50px;
+  cursor: pointer;
 }
 
 .textArea {

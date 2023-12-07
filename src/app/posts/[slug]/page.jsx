@@ -1,40 +1,39 @@
-"use client"
-import {Comments} from "@/components/Comments";
+"use client";
+import { Comments } from "@/components/Comments";
 import Image from "next/image";
 import html from "react-inner-html";
 import styles from "./singlepage.module.css";
-import {useEffect, useState} from "react";
-import LoadingScreen from '@components/LoadingScreen'
+import { useEffect, useState } from "react";
+import LoadingScreen from "@components/LoadingScreen";
 import { MoonLoader } from "react-spinners";
 const getData = async (slug) => {
   const res = await fetch(`/api/posts/${slug}`, {
     cache: "no-cache",
   });
   if (!res.ok) {
-    console.log(res)
+    console.log(res);
     throw new Error("Failed!");
   }
   return res.json();
 };
 
-const SinglePage = ({params}) => {
+const PostPage = ({ params }) => {
   const { slug } = params;
 
   const [isImgLoading, setIsImgLoading] = useState(true);
-  const [loading, setLoading] = useState(true)
-  const [data, setData] = useState({})
+  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState({});
 
   useEffect(() => {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
     async function get() {
       let response = await getData(slug);
-      setData(response)
-      setLoading(false)
+      setData(response);
+      setLoading(false);
     }
 
-    get()
+    get();
   }, [slug]);
-
 
   return (
     <>
@@ -69,7 +68,7 @@ const SinglePage = ({params}) => {
                 </div>
               </div>
             </div>
-            {data.img && (
+            {data?.img && (
               <div className={styles.imageContainer}>
                 {data.img && (
                   <Image
@@ -107,7 +106,4 @@ const SinglePage = ({params}) => {
   );
 };
 
-export default SinglePage;
-
-
-
+export default PostPage;

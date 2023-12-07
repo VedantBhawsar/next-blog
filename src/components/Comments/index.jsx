@@ -1,10 +1,10 @@
 "use client";
-import React, {useState} from "react";
+import React, { useState } from "react";
 import styles from "./comments.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import useSWR from "swr";
-import {useSession} from "next-auth/react";
+import { useSession } from "next-auth/react";
 
 const fetcher = async (url) => {
   const res = await fetch(url);
@@ -57,7 +57,7 @@ export const Comments = ({ postId }) => {
             </button>
           ) : (
             <button
-              disabled={description.length< 4 && true}
+              disabled={description.length < 4 && true}
               className={styles.button}
               style={{ cursor: description.length < 4 ? "not-allowed" : "" }}
               onClick={handleSubmit}
@@ -71,7 +71,7 @@ export const Comments = ({ postId }) => {
       )}
       <div className={styles.comments}>
         {isLoading
-          ? "loading"
+          ? "loading..."
           : data?.map((item) => (
               <div className={styles.comment} key={item._id}>
                 <div className={styles.user}>

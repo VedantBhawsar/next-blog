@@ -1,9 +1,8 @@
-.container{
+.container {
   max-width: 100%;
   flex-direction: column;
   padding: 0 100px;
 }
-
 
 .infoContainer {
   display: flex;
@@ -20,14 +19,14 @@
 
 .title {
   font-size: 64px;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
   text-wrap: normal;
 }
 
 .user {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 15px;
 }
 
 .userImageContainer {
@@ -67,7 +66,7 @@
   user-select: none;
 }
 
-.imgLoading{
+.imgLoading {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -105,7 +104,7 @@
 }
 @media screen and (max-width: 1024px) {
   .infoContainer {
-  flex-direction: column-reverse;
+    flex-direction: column-reverse;
   }
 }
 @media screen and (max-width: 640px) {
@@ -113,18 +112,18 @@
     font-size: 36px;
   }
 
-  .infoContainer{
-    gap:10px
+  .infoContainer {
+    gap: 10px;
   }
 
-  .container{
+  .container {
     padding: 0px;
   }
   .description p {
     font-size: 18px;
   }
 
-  .title{
+  .title {
     margin-bottom: 10px;
   }
 }
